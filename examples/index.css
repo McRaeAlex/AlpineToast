@@ -1,0 +1,19 @@
+.toast {
+    transition: transform 2s ease-in-out;
+    transform: translate(200%, 0px);
+}
+
+.toast.show {
+    transform: translate(0, 0);
+}
+
+.toast-container {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    overflow-x: hidden;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
