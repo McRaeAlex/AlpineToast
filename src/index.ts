@@ -9,7 +9,8 @@ class AlpineToast {
     delayRemoval: number;
 
     constructor(toastContainer: HTMLElement = document.createElement("div"), onShowClasses: string = "", onHideClasses: string = "", delayRemoval: number = 1000, duration: number = 5000) {
-        this.onShowClasses = onShowClasses; this.onHideClasses = onHideClasses;
+        this.onShowClasses = onShowClasses;
+        this.onHideClasses = onHideClasses;
         this.delayRemoval = delayRemoval;
         this.duration = duration;
 
