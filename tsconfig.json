@@ -1,7 +1,6 @@
 {
-    "compilerOptions": {
-        "removeComments": true,
-        "allowJs": true,
-        "module": "ES6"
-    }
+  "compilerOptions": {
+    "removeComments": true,
+    "allowJs": true,
+  }
 }

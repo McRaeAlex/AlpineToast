@@ -1,72 +1,92 @@
+interface AlpineToastConfig {
+  toastContainer?: HTMLElement;
+  onShowClasses?: string;
+  onHideClasses?: string;
+  delayRemoval?: number;
+  duration?: number;
+}
 
 class AlpineToast {
-    container: HTMLElement;
+  container: HTMLElement;
 
-    onShowClasses: string;
-    onHideClasses: string;
+  onShowClasses: string;
+  onHideClasses: string;
 
-    duration: number;
-    delayRemoval: number;
+  duration: number;
+  delayRemoval: number;
 
-    constructor(toastContainer: HTMLElement = document.createElement("div"), onShowClasses: string = "", onHideClasses: string = "", delayRemoval: number = 1000, duration: number = 5000) {
-        this.onShowClasses = onShowClasses;
-        this.onHideClasses = onHideClasses;
-        this.delayRemoval = delayRemoval;
-        this.duration = duration;
+  constructor(config: AlpineToastConfig) {
+    this.onShowClasses = config.onShowClasses || "";
+    this.onHideClasses = config.onHideClasses || "";
 
-        this.container = toastContainer;
-        document.body.appendChild(this.container);
+    this.delayRemoval = config.delayRemoval || 1000;
+    this.duration = config.duration || 5000;
+
+    this.container = config.toastContainer || this.defaultContainer();
+    document.body.appendChild(this.container);
+  }
+
+  defaultContainer() {
+    let container = document.createElement("div");
+    container.setAttribute("id", "alpine-toast-container");
+    container.style.position = "absolute";
+    container.style.right = "10px";
+    container.style.bottom = "10px";
+    container.style.overflow = "hidden";
+    return container;
+  }
+
+  /**
+   * getToasts retrieves all the elements which become toasts
+   */
+  getToasts() {
+    return document.querySelectorAll("[x-toast]");
+  }
+
+  /**
+   * makeToasts converts the elements into toasts
+   */
+  makeToasts() {
+    const toasts = this.getToasts();
+
+    toasts.forEach((elem) => this.makeToast(elem));
+  }
+
+  /**
+   * makeToast turns a signle element into a toast
+   * @param elem The element to become the toast
+   */
+  makeToast(elem) {
+    let duration = this.duration; // Default or use the passed in duration
+
+    // Countdown the timer until it should disappear
+    const update_timer = setInterval(() => {
+      if (!elem.matches(":hover")) {
+        duration = duration - 100;
+      }
+
+      if (duration <= 0) {
+        // Stop updating the timer
+        clearInterval(update_timer);
+
+        // Toogle a class
+        if (this.onHideClasses !== "") {
+          elem.classList.toggle(this.onHideClasses);
+        }
+        // Remove the element from the dom
+        setTimeout(() => elem.remove(), this.delayRemoval);
+      }
+    }, 100);
+
+    // Toggle some class
+    setTimeout(() => {
+    if (this.onShowClasses !== "") {
+      elem.classList.toggle(this.onShowClasses);
     }
-
-    /**
-     * getToasts retrieves all the elements which become toasts
-     */
-    getToasts() {
-        return document.querySelectorAll("[x-toast]");
-    }
-
-    /**
-     * makeToasts converts the elements into toasts
-     */
-    makeToasts() {
-        const toasts = this.getToasts();
-
-        toasts.forEach(this.makeToast);
-    }
-
-    /**
-     * makeToast turns a signle element into a toast
-     * @param elem The element to become the toast
-     */
-    makeToast(elem) {
-        let duration = this.duration; // Default or use the passed in duration
-
-        // Countdown the timer until it should disappear
-        const update_timer = setInterval(() => {
-            if (!elem.matches(":hover")) {
-                duration = duration - 100;
-            }
-
-            if (duration <= 0) {
-                // Stop updating the timer
-                clearInterval(update_timer);
-
-                // Toogle a class
-                elem.classList.toggle(this.onHideClasses);
-
-                // Remove the element from the dom
-                setTimeout(() => elem.remove(), this.delayRemoval);
-            }
-        }, 100);
-
-        setTimeout(() => {
-            // Toggle some class
-            elem.classList.toggle(this.onShowClasses);
-        }, 1000);
-
-        // Add the element to the toast container for styling
-        this.container.appendChild(elem);
-    }
+    }, 500);
+    // Add the element to the toast container for styling
+    this.container.appendChild(elem);
+  }
 }
 
 export default AlpineToast;

@@ -11,8 +11,6 @@ of the project.
 
 ## To do:
 
-* Figure out how to package a js library
-* Create a good set of defaults
-* Test it
-* Rollup and typescript config
-* Example project
+- Figure out how to package a js library
+- Create a good set of defaults
+- Add functions for programatically adding toasts

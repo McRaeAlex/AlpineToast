@@ -1,45 +1,60 @@
-'use strict';
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.AlpineToast = factory());
+}(this, (function () { 'use strict';
 
-var AlpineToast = (function () {
-    function AlpineToast(toastContainer, onShowClasses, onHideClasses, delayRemoval, duration) {
-        if (toastContainer === void 0) { toastContainer = document.createElement("div"); }
-        if (onShowClasses === void 0) { onShowClasses = ""; }
-        if (onHideClasses === void 0) { onHideClasses = ""; }
-        if (delayRemoval === void 0) { delayRemoval = 1000; }
-        if (duration === void 0) { duration = 5000; }
-        this.onShowClasses = onShowClasses;
-        this.onHideClasses = onHideClasses;
-        this.delayRemoval = delayRemoval;
-        this.duration = duration;
-        this.container = toastContainer;
-        document.body.appendChild(this.container);
-    }
-    AlpineToast.prototype.getToasts = function () {
-        return document.querySelectorAll("[x-toast]");
-    };
-    AlpineToast.prototype.makeToasts = function () {
-        var toasts = this.getToasts();
-        toasts.forEach(this.makeToast);
-    };
-    AlpineToast.prototype.makeToast = function (elem) {
-        var _this = this;
-        var duration = this.duration;
-        var update_timer = setInterval(function () {
-            if (!elem.matches(":hover")) {
-                duration = duration - 100;
-            }
-            if (duration <= 0) {
-                clearInterval(update_timer);
-                elem.classList.toggle(_this.onHideClasses);
-                setTimeout(function () { return elem.remove(); }, _this.delayRemoval);
-            }
-        }, 100);
-        setTimeout(function () {
-            elem.classList.toggle(_this.onShowClasses);
-        }, 1000);
-        this.container.appendChild(elem);
-    };
+    var AlpineToast = (function () {
+        function AlpineToast(config) {
+            this.onShowClasses = config.onShowClasses || "";
+            this.onHideClasses = config.onHideClasses || "";
+            this.delayRemoval = config.delayRemoval || 1000;
+            this.duration = config.duration || 5000;
+            this.container = config.toastContainer || this.defaultContainer();
+            document.body.appendChild(this.container);
+        }
+        AlpineToast.prototype.defaultContainer = function () {
+            var container = document.createElement("div");
+            container.setAttribute("id", "alpine-toast-container");
+            container.style.position = "absolute";
+            container.style.right = "10px";
+            container.style.bottom = "10px";
+            container.style.overflow = "hidden";
+            return container;
+        };
+        AlpineToast.prototype.getToasts = function () {
+            return document.querySelectorAll("[x-toast]");
+        };
+        AlpineToast.prototype.makeToasts = function () {
+            var _this = this;
+            var toasts = this.getToasts();
+            toasts.forEach(function (elem) { return _this.makeToast(elem); });
+        };
+        AlpineToast.prototype.makeToast = function (elem) {
+            var _this = this;
+            var duration = this.duration;
+            var update_timer = setInterval(function () {
+                if (!elem.matches(":hover")) {
+                    duration = duration - 100;
+                }
+                if (duration <= 0) {
+                    clearInterval(update_timer);
+                    if (_this.onHideClasses !== "") {
+                        elem.classList.toggle(_this.onHideClasses);
+                    }
+                    setTimeout(function () { return elem.remove(); }, _this.delayRemoval);
+                }
+            }, 100);
+            setTimeout(function () {
+                if (_this.onShowClasses !== "") {
+                    elem.classList.toggle(_this.onShowClasses);
+                }
+            }, 500);
+            this.container.appendChild(elem);
+        };
+        return AlpineToast;
+    }());
+
     return AlpineToast;
-}());
 
-module.exports = AlpineToast;
+})));
