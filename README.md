@@ -11,8 +11,7 @@ of the project.
 
 ## To do:
 
-- Figure out how to package a js library
-- Create a good set of defaults
+- Set good defaults and write an example application which fakes UI to see how well it would work
 
 ## Install
 

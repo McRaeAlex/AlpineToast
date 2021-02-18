@@ -1,4 +1,4 @@
-import AlpineToast from '../../dist/index';
+import AlpineToast from 'alpine-toast';
 
 const toaster = new AlpineToast({ onShowClasses: "show", onHideClasses: "show" });
 
