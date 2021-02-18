@@ -1,5 +1,3 @@
-'use strict';
-
 var AlpineToast = /** @class */ (function () {
     function AlpineToast(config) {
         this.onShowClasses = config.onShowClasses || "";
@@ -77,5 +75,5 @@ var AlpineToast = /** @class */ (function () {
     return AlpineToast;
 }());
 
-module.exports = AlpineToast;
-//# sourceMappingURL=index.js.map
+export default AlpineToast;
+//# sourceMappingURL=index.es.js.map

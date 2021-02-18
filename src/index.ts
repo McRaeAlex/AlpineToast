@@ -26,7 +26,7 @@ class AlpineToast {
     document.body.appendChild(this.container);
   }
 
-  defaultContainer() {
+  private defaultContainer() {
     let container = document.createElement("div");
     container.setAttribute("id", "alpine-toast-container");
     container.style.position = "absolute";
@@ -39,26 +39,31 @@ class AlpineToast {
   /**
    * getToasts retrieves all the elements which become toasts
    */
-  getToasts() {
+  private getToasts() {
     return document.querySelectorAll("[x-toast]");
   }
 
   /**
    * makeToasts converts the elements into toasts
    */
-  makeToasts() {
+  start() {
     const toasts = this.getToasts();
 
-    toasts.forEach((elem) => this.makeToast(elem));
+    toasts.forEach((elem) => {
+      this.makeToast(elem);
+    });
   }
 
   /**
    * makeToast turns a signle element into a toast
    * @param elem The element to become the toast
    */
-  makeToast(elem) {
+  makeToast(elem: Element) {
     let duration = this.duration; // Default or use the passed in duration
+    // TODO: Configuration for the toast goes here
 
+    // Stop the toast from being created more than once
+    elem.removeAttribute('x-toast');
     // Countdown the timer until it should disappear
     const update_timer = setInterval(() => {
       if (!elem.matches(":hover")) {
@@ -86,6 +91,12 @@ class AlpineToast {
     }, 500);
     // Add the element to the toast container for styling
     this.container.appendChild(elem);
+  }
+
+  new(text: string) {
+    const div = document.createElement('div');
+    div.innerHTML = text;
+    this.makeToast(div);
   }
 }
 

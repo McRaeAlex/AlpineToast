@@ -13,4 +13,11 @@ of the project.
 
 - Figure out how to package a js library
 - Create a good set of defaults
-- Add functions for programatically adding toasts
+
+## Install
+
+TODO: Write the install steps
+
+## Usage
+
+TODO: Usage example

@@ -1,15 +1,17 @@
 {
   "name": "alpine-toast",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A toast library using alpine-js for phoenix-liveview",
   "main": "dist/index.js",
-  "module": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
-    "build": "rollup --config",
-    "format": "prettier --write src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "dev": "rollup -cw",
+    "format": "prettier --write src"
   },
-  "author": "Alexander McRae mail@alexandermcrae.com",
+  "author": "Alexander McRae <mcraealex16@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.2.0",
