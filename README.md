@@ -11,7 +11,10 @@ of the project.
 
 ## To do:
 
-- Set good defaults and write an example application which fakes UI to see how well it would work
+* Progress Bar
+* Early cancellation with button
+* TailWindCSS config
+* VanillaCSS config for non tailwind users
 
 ## Install
 
@@ -20,3 +23,21 @@ TODO: Write the install steps
 ## Usage
 
 TODO: Usage example
+
+## Contributing
+
+The easiest way to get started editing the codebase is by running
+
+```
+npm install
+```
+
+Then start the dev server
+
+```
+npm run dev
+```
+
+To see the changes do the same thing in the example dir which will allow you
+to modify both the example code and the library code an see you changes right
+away.

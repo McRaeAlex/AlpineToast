@@ -8,13 +8,13 @@ export default {
       file: pkg.main,
       format: 'cjs',
       sourcemap: true,
-      exports: 'default'
+      exports: 'named'
     },
     {
       file: pkg.module,
       format: 'es',
       sourcemap: true,
-      exports: 'default'
+      exports: 'named'
     },
   ],
   plugins: [typescript({ typescript: require('typescript'), tslib: require('tslib') })],

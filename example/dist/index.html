@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css" />
-    <script src="main.js" defer></script>
-    <title>Apline-Toast-Example</title>
-  </head>
-  <body>
-    <div class="toast" x-toast="{ duration: 1000 }">
-      This is the first alert
-    </div>
-    <div x-toast="{ duration: 1000 }">This is the alert</div>
-    <p>This is the content soooo much content</p>
-    <button id="newToastButton">New Toast</button>
-    <button>New Error Toast</button>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./tailwind.css">
+  <script src="main.js" defer></script>
+  <title>Apline-Toast-Example</title>
+</head>
+
+<body>
+  <div class=""
+    x-toast>
+    This is the first alert
+  </div>
+  <div x-toast="{ duration : 1000 }">This is the alert</div>
+  <div x-toast>This is a toast with no args</div>
+
+
+  <div class="mt-8 bg-gray-50 shadow mx-auto w-96 px-8 pb-2 pt-5">
+    <form id="new_post">
+      <textarea class="p-1" name="post" id="post_area" cols="30" rows="10"
+        placeholder="Write your post here"></textarea>
+      <br>
+      <div class="text-right">
+       <input class="p-2 rounded bg-blue-200 shadow-sm" type="submit" value="Submit" >
+      </div>
+    </form>
+
+  </div>
+
+</body>
+
 </html>
