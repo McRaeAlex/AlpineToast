@@ -9,6 +9,10 @@ last 1%.
 AlpineToast does not use the alpinejs library but follows the simplicity
 of the project.
 
+## Demo
+
+[mcraealex.github.io/AlpineToast/dist/index.html](https://mcraealex.github.io/AlpineToast/example/dist/index.html)
+
 ## To do:
 
 * Progress Bar
@@ -18,7 +22,9 @@ of the project.
 
 ## Install
 
-TODO: Write the install steps
+```bash
+npm i alpine-toast
+```
 
 ## Usage
 

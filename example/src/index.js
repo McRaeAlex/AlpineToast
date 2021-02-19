@@ -4,8 +4,6 @@ const toaster = new AlpineToast(TailWindCSSConfig);
 
 // Wait until the DOM loads then convert to toasts
 document.addEventListener('DOMContentLoaded', () => {
-    console.info(toaster);
-
     toaster.start();
 })
 
