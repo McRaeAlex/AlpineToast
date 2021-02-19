@@ -10,5 +10,5 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById('new_post').onsubmit = (e) => {
     e.preventDefault();
     document.getElementById('post_area').value = '';
-    toaster.newToast("Your post has been submitted! :)")
+    toaster.newToast("Your post has been submitted! :)", {duration: 4000})
 };

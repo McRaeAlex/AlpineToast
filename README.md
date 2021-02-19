@@ -15,10 +15,12 @@ of the project.
 
 ## To do:
 
+* Evalate different ways of adding a progress bar and cancellation
 * Progress Bar
 * Early cancellation with button
 * TailWindCSS config
 * VanillaCSS config for non tailwind users
+* Write hooks which make sure before the package it uploaded to github it passes test cases and it builds so people have access to the compiled code
 
 ## Install
 
