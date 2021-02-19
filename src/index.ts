@@ -49,7 +49,7 @@ class AlpineToast {
   }
 
   /**
-   * makeToasts converts the elements into toasts
+   * makeToasts converts all the elements with the x-toast attribute into toasts 
    */
   start() {
     const toasts = this.getToasts();
