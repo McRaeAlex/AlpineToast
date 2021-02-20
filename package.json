@@ -1,6 +1,6 @@
 {
   "name": "alpine-toast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A toast library using alpine-js for phoenix-liveview",
   "bugs": {
     "url": "https://github.com/McRaeAlex/AlpineToast/issues"
