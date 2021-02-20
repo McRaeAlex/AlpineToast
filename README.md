@@ -6,7 +6,7 @@ with x-toast and will make it a toast.
 The library aims to be configurable for the 99% use case an forkable for the
 last 1%.
 
-AlpineToast does not use the alpinejs library but follows the simplicity
+AlpineToast does not use the [Alpine](https://github.com/alpinejs/alpine) library but follows the simplicity
 of the project.
 
 ## Demo
@@ -90,7 +90,11 @@ away.
 * Add the ability to have types of toasts passed in as a config field which changes the config.
     * Not sure if this type would map to another config or just add classes to the config being used.
 * Early cancellation with button
+* Add usage for using with Phoenix LiveView
 * TailWindCSS config
+* Add generated API documentation
+* Create another page in the demo application which shows all the different configuration options turning different ones on and off still using the tailwindcss classes
 * VanillaCSS config for non tailwind users
+    * This just means copying the tailwindcss styles to another css class and putting them under a single class name instead of adding a bunch of different ones. (May be possible to just automate this)
 * Write hooks which make sure before the package it uploaded to github it passes test cases and it builds so people have access to the compiled code
 
